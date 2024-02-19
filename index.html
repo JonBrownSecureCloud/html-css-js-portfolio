@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
+    <title>My Site</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
   </head>
@@ -43,7 +43,23 @@
       <div class="section__text">
         <p class="section__text__p1">Hello, I'm</p>
         <h1 class="title">Jon Brown</h1>
-        <p class="section__text__p2">Information Security Administrator</p>
+<div id="description">Information Security Administrator</div>
+<script>
+    window.onload = function() {
+        var descriptions = ["Information Security Administrator", "Husband & Father", "Veteran"];
+        var index = 0;
+        var descriptionElement = document.getElementById("description");
+
+        setInterval(function() {
+            descriptionElement.textContent = descriptions[index];
+            index = (index + 1) % descriptions.length;
+            
+            // Change font size
+            descriptionElement.style.fontSize = "15px"; // Adjust the font size as needed
+        }, 1500); // Change description every 1.5 seconds (1500 milliseconds)
+    };
+</script>
+<br>
         <div class="btn-container">
           <button
             class="btn btn-color-2"
