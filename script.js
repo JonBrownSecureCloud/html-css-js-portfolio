@@ -5,6 +5,13 @@ function toggleMenu() {
   icon.classList.toggle("open");
 }
 
+function scrollToSection(sectionId) {
+  var section = document.getElementById(sectionId);
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
 // Counter code
 document.addEventListener("DOMContentLoaded", function() {
   const counter = document.querySelector(".counter-number");
