@@ -62,11 +62,9 @@ function setLightMode() {
 // Counter code
 document.addEventListener("DOMContentLoaded", function() {
   const counter = document.querySelector(".counter-number");
-  
-  // Function to fetch counter value from the server
   async function updateCounter() {
       try {
-          let response = await fetch("Your-LambdaFunction-URL");
+          let response = await fetch("https://74exitkjjxmjwkrbbxkr4t77pu0uuvlq.lambda-url.us-east-1.on.aws/");
           if (!response.ok) {
               throw new Error("Failed to fetch counter data");
           }
