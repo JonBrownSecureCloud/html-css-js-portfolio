@@ -60,27 +60,22 @@ function setLightMode() {
 }
 
 // Counter code
-$(document).ready(function() {
-  // Get the initial value of the counter from the server
-  $.get("https://74exitkjjxmjwkrbbxkr4t77pu0uuvlq.lambda-url.us-east-1.on.aws/", function(data) {
-      var counterValue = parseInt(data.body);
-      $("#counter").text(counterValue);
-  });
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+      e.preventDefault();
 
-  // Increment the counter when the button is clicked
-  $("#incrementButton").click(function() {
-      $.ajax({
-          url: "https://74exitkjjxmjwkrbbxkr4t77pu0uuvlq.lambda-url.us-east-1.on.aws/",
-          type: "POST",
-          success: function(data) {
-              var counterValue = parseInt($("#counter").text());
-              counterValue++;
-              $("#counter").text(counterValue);
-          },
-          error: function(xhr, status, error) {
-              console.error("Error:", error);
-          }
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
       });
   });
 });
 
+const counter = document.querySelector(".counter-number");
+async function updateCounter() {
+  let response = await fetch(
+      "https://74exitkjjxmjwkrbbxkr4t77pu0uuvlq.lambda-url.us-east-1.on.aws/"
+  );
+  let data = await response.json();
+  counter.innerHTML = `👀 Views: ${data}`;
+}
+updateCounter();
