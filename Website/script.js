@@ -60,24 +60,27 @@ function setLightMode() {
 }
 
 // Counter code
-document.addEventListener("DOMContentLoaded", function() {
-  const counter = document.querySelector(".counter-number");
-  async function updateCounter() {
-      try {
-          let response = await fetch("https://74exitkjjxmjwkrbbxkr4t77pu0uuvlq.lambda-url.us-east-1.on.aws/");
-          if (!response.ok) {
-              throw new Error("Failed to fetch counter data");
-          }
-          let data = await response.json();
-          counter.textContent = data.views;
-      } catch (error) {
-          console.error("Error fetching counter data:", error);
-      }
-  }
-  
-  // Initial call to update counter when the page loads
-  updateCounter();
+$(document).ready(function() {
+  // Get the initial value of the counter from the server
+  $.get("https://74exitkjjxmjwkrbbxkr4t77pu0uuvlq.lambda-url.us-east-1.on.aws/", function(data) {
+      var counterValue = parseInt(data.body);
+      $("#counter").text(counterValue);
+  });
 
-  // Optionally, you can update the counter at regular intervals
-  // setInterval(updateCounter, 5000); // Update every 5 seconds, for example
+  // Increment the counter when the button is clicked
+  $("#incrementButton").click(function() {
+      $.ajax({
+          url: "https://74exitkjjxmjwkrbbxkr4t77pu0uuvlq.lambda-url.us-east-1.on.aws/",
+          type: "POST",
+          success: function(data) {
+              var counterValue = parseInt($("#counter").text());
+              counterValue++;
+              $("#counter").text(counterValue);
+          },
+          error: function(xhr, status, error) {
+              console.error("Error:", error);
+          }
+      });
+  });
 });
+
