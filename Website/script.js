@@ -59,7 +59,6 @@ function setLightMode() {
   });
 }
 
-// Counter code
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
       e.preventDefault();
@@ -73,9 +72,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 const counter = document.querySelector(".counter-number");
 async function updateCounter() {
   let response = await fetch(
-      "https://74exitkjjxmjwkrbbxkr4t77pu0uuvlq.lambda-url.us-east-1.on.aws/"
-  );
+      "https://74exitkjjxmjwkrbbxkr4t77pu0uuvlq.lambda-url.us-east-1.on.aws/");
   let data = await response.json();
-  counter.innerHTML = `👀 Views: ${data}`;
+  counter.innerHTML = ` SITE VIEWS: ${data}`;
 }
 updateCounter();
