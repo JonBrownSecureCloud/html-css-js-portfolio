@@ -71,9 +71,16 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 const counter = document.querySelector(".counter-number");
 async function updateCounter() {
-  let response = await fetch(
-      "https://74exitkjjxmjwkrbbxkr4t77pu0uuvlq.lambda-url.us-east-1.on.aws/");
-  let data = await response.json();
-  counter.innerHTML = ` SITE VIEWS: ${data}`;
+  try {
+    let response = await fetch("https://74exitkjjxmjwkrbbxkr4t77pu0uuvlq.lambda-url.us-east-1.on.aws/");
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    let data = await response.json();
+    counter.innerHTML = ` SITE VIEWS: ${data}`;
+  } catch (error) {
+    console.error('Error fetching counter value:', error);
+  }
 }
+
 updateCounter();
