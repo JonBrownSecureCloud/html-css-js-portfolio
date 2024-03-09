@@ -57,3 +57,4 @@ function setLightMode() {
   themeIcons.forEach((icon) => {
     icon.src = icon.getAttribute("src-light");
   });
+}
