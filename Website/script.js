@@ -57,4 +57,34 @@ function setLightMode() {
   themeIcons.forEach((icon) => {
     icon.src = icon.getAttribute("src-light");
   });
+<<<<<<< HEAD
 }
+=======
+}
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+      });
+  });
+});
+
+const counter = document.querySelector(".counter-number");
+async function updateCounter() {
+  try {
+    let response = await fetch("https://74exitkjjxmjwkrbbxkr4t77pu0uuvlq.lambda-url.us-east-1.on.aws/");
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    let data = await response.json();
+    counter.innerHTML = ` SITE VIEWS: ${data}`;
+  } catch (error) {
+    console.error('Error fetching counter value:', error);
+  }
+}
+
+updateCounter();
+>>>>>>> 528d55a487d4bfc262cb893a27021c4712258946
