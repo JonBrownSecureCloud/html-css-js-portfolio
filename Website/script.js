@@ -57,8 +57,4 @@ function setLightMode() {
   themeIcons.forEach((icon) => {
     icon.src = icon.getAttribute("src-light");
   });
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> aef5377ba06e34bab1c8f1df8935d16055d7266a
